@@ -2,7 +2,7 @@
 // Global Variables
 // =============================================================
 
-var wordOptions = ['martini', 'sidecar', 'negroni', 'sazerac', 'test2', 'hi'];
+var wordOptions = ['mars', 'earth', 'venus', 'uranus', 'saturn', 'jupitor', 'neptune', 'mercury'];
 var selectedWord = '';
 var lettersInWord = [];
 var numBlanks = 0;
@@ -18,6 +18,9 @@ var guessWordDiv = document.getElementById('guess-word');
 var guessLeftDiv = document.getElementById('guesses-left');
 var winCounterDiv = document.getElementById('win-counter');
 var lossCounterDiv = document.getElementById('loss-counter');
+var resetBtn = document.getElementById('reset-btn');
+var rocket = document.getElementById('rocket');
+var wordGuessContainer = document.getElementById('Gword-contianer');
 
 // Functions
 // =============================================================
@@ -49,6 +52,21 @@ function startGame() {
   console.log(lettersInWord);
   console.log(numBlanks);
   console.log(blanksAndSuccess);
+}
+
+function resetGame() {
+  //Add visual indicator of game reset and fly rocket
+  wordGuessContainer.classList.add('reset');
+
+  //Call the startGame function
+  startGame();
+
+  //Clear visual indicator of game reset
+  setTimeout(function() {
+    wordGuessContainer.classList.remove('reset')
+  }, 1000);
+  // TODO: set off animiation
+
 }
 
 function checkLetters(letter) {
@@ -114,3 +132,6 @@ document.onkeyup = function(event) {
   //Debugger
   console.log(letterGuessed);
 }
+
+// Reset Button
+resetBtn.addEventListener('click', resetGame);

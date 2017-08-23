@@ -4,25 +4,41 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="./Assets/CSS/reset.css">
   <link rel="stylesheet" href="./Assets/CSS/main.css">
+  <link href="https://fonts.googleapis.com/css?family=Raleway|Audiowide|Expletus+Sans" rel="stylesheet">
   <title>Hangman Game</title>
 </head>
 <body>
   <div class="container">
+    <div class="inter-container">
     <div class="top-div">
-      <h1>Hangman!</h1>
+      <h1>Planet Hangman!</h1>
       <hr>
     </div>
 
-    <div id="guess-word">  <h3>Word to Guess</h3></div>
-    <hr>
-    <div id="guesses-left">10</div>
-    <hr>
-    <div id="win-counter">50</div>
-    <hr>
+    <div id="Gword-contianer" class="main-stage">
+      <h3>Word to Guess:</h3> <div id="guess-word"></div>
+    </div>
 
-    <div id="loss-counter">3</div>
-
+    <hr>
+    <div class="game-element">
+      <span>Guesses Left:</span>
+      <div class="game-stat" id="guesses-left"></div>
+    </div>
+    <hr>
+    <div class="game-element">
+      <span>Wins:</span>
+      <div class="game-stat" id="win-counter">50</div>
+    </div>
+    <hr>
+    <div class="game-element">
+      <span>Loses:</span>
+      <div class="game-stat" id="loss-counter">3</div>
+      <br>
+    </div>
+    <div id="reset-btn">Reset Game</div>
   </div>
+  </div>
+  <img src="./Assets/Images/rocket.svg" alt="" id="rocket">
 <script src="./Assets/JS/main.js" charset="utf-8"></script>
 </body>
 </html>
