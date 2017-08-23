@@ -13,6 +13,12 @@ var winCount = 0;
 var lossCount = 0;
 var guessesLeft = 0;
 
+//DOM Elements
+var guessWordDiv = document.getElementById('guess-word');
+var guessLeftDiv = document.getElementById('guesses-left');
+var winCounterDiv = document.getElementById('win-counter');
+var lossCounterDiv = document.getElementById('loss-counter');
+
 // Functions
 // =============================================================
 
@@ -21,12 +27,90 @@ function startGame() {
   selectedWord = wordOptions[Math.floor(Math.random() * wordOptions.length)];
   lettersInWord = selectedWord.split('');
   numBlanks = lettersInWord.length;
+
+  //Reset
+  guessesLeft = 9;
+  blanksAndSuccess = [];
+  wrongGuesses = [];
+
+  // Populate blanks and successes with right number of blanks.
+  for (var i = 0; i < numBlanks; i++) {
+    blanksAndSuccess.push('_');
+  }
+
+  // Update DOM to reflect game round condition
+  guessWordDiv.innerHTML = blanksAndSuccess.join(' ');
+  guessLeftDiv.innerHTML = guessesLeft;
+  winCounterDiv.innerHTML = winCount;
+  lossCounterDiv.innerHTML = lossCount;
+
+  //Debugging
   console.log(selectedWord);
   console.log(lettersInWord);
   console.log(numBlanks);
+  console.log(blanksAndSuccess);
 }
 
+function checkLetters(letter) {
+  // Check if letter exists in code
+  var isLetterInWord = false;
+
+  for (var i = 0; i < numBlanks; i++) {
+    if (selectedWord[i] === letter) {
+      isLetterInWord = true;
+    }
+  }
+  // Check where in the word the letter exists, then populate the array
+  if (isLetterInWord) {
+    for (var i = 0; i < numBlanks; i++) {
+      if (selectedWord[i] === letter) {
+        blanksAndSuccess[i] = letter;
+      }
+    }
+  }
+  // Letter wasn't found
+  else {
+    wrongGuesses.push(letter);
+    guessesLeft--;
+  }
+}
+
+function roundComplete() {
+  console.log('Win Count: ' + winCount + ' | Loss Count: ' + lossCount + ' | Guesses Left: ' + guessesLeft);
+
+  //Update the DOM
+  guessLeftDiv.innerHTML = guessesLeft;
+  guessWordDiv.innerHTML = blanksAndSuccess.join(' ');
+
+  // Check if User Won
+    if (lettersInWord.toString() == blanksAndSuccess.toString()) {
+      winCount++;
+      alert('You Win');
+
+      winCounterDiv.innerHTML = winCount;
+      startGame();
+    }
+  // Check if User Lost
+
+    else if (guessesLeft < 1) {
+      lossCount++;
+      alert('You Lost');
+      lossCounterDiv.innerHTML = lossCount;
+      startGame();
+    }
+}
 
 // Main Process
 // =============================================================
+// Initiates code on first load
 startGame();
+
+// Keyup event listener
+document.onkeyup = function(event) {
+  var letterGuessed = String.fromCharCode(event.keyCode).toLowerCase();
+  checkLetters(letterGuessed);
+  roundComplete();
+
+  //Debugger
+  console.log(letterGuessed);
+}
