@@ -2,7 +2,7 @@
 // Global Variables
 // =============================================================
 
-var wordOptions = ['mars', 'earth', 'venus', 'uranus', 'saturn', 'jupitor', 'neptune', 'mercury'];
+var wordOptions = ['mars', 'earth', 'venus', 'uranus', 'saturn', 'jupiter', 'neptune', 'mercury'];
 var selectedWord = '';
 var lettersInWord = [];
 var numBlanks = 0;
@@ -101,7 +101,7 @@ function roundComplete() {
   guessWordDiv.innerHTML = blanksAndSuccess.join(' ');
 
   // Check if User Won
-    if (lettersInWord.toString() == blanksAndSuccess.toString()) {
+    if (lettersInWord.toString() === blanksAndSuccess.toString()) {
       winCount++;
       alert('You Win');
 
