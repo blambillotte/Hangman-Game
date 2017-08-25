@@ -103,10 +103,14 @@ function roundComplete() {
   // Check if User Won
     if (lettersInWord.toString() === blanksAndSuccess.toString()) {
       winCount++;
-      alert('You Win');
+      setTimeout(function(){
+      alert('You Guessed It! "' + selectedWord + '"');
+      },200);
 
       winCounterDiv.innerHTML = winCount;
+      setTimeout(function(){
       startGame();
+    }, 500);
     }
   // Check if User Lost
 
