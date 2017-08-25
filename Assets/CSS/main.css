@@ -30,6 +30,10 @@ hr {
   border-color: #257ccd;
 }
 
+.red-text {
+  color: #ff2f76;
+}
+
 /****** Containers ******/
 
 .directions {
@@ -131,6 +135,7 @@ hr {
 
 #guess-word {
   transition: all 1s ease;
+  color: #ff2f76;
 }
 
 #incorrect-guesses {
