@@ -21,6 +21,7 @@ var lossCounterDiv = document.getElementById('loss-counter');
 var resetBtn = document.getElementById('reset-btn');
 var rocket = document.getElementById('rocket');
 var wordGuessContainer = document.getElementById('Gword-contianer');
+var incorrectGuessesDiv = document.getElementById('incorrect-guesses');
 
 // Functions
 // =============================================================
@@ -46,12 +47,14 @@ function startGame() {
   guessLeftDiv.innerHTML = guessesLeft;
   winCounterDiv.innerHTML = winCount;
   lossCounterDiv.innerHTML = lossCount;
+  incorrectGuessesDiv.innerHTML = wrongGuesses;
 
   //Debugging
   console.log(selectedWord);
   console.log(lettersInWord);
   console.log(numBlanks);
   console.log(blanksAndSuccess);
+  console.log(wrongGuesses);
 }
 
 function resetGame() {
@@ -89,6 +92,7 @@ function checkLetters(letter) {
   // Letter wasn't found
   else {
     wrongGuesses.push(letter);
+    incorrectGuessesDiv.innerHTML = wrongGuesses.join(', ');
     guessesLeft--;
   }
 }
@@ -116,7 +120,7 @@ function roundComplete() {
 
     else if (guessesLeft < 1) {
       lossCount++;
-      alert('You Lost');
+      alert('You Lost! The Correct Word Was: "' + selectedWord + '"');
       lossCounterDiv.innerHTML = lossCount;
       startGame();
     }

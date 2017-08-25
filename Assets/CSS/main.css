@@ -12,7 +12,48 @@ h1 {
   text-align: center;
 }
 
+h2 {
+  font-family: 'Audiowide', cursive;
+  color: #ff2f76;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+p {
+  font-size: .8em;
+  line-height: 1.3em;
+  color: #bed5ea;
+  margin-top: 10px;
+}
+
+hr {
+  border-color: #257ccd;
+}
+
 /****** Containers ******/
+
+.directions {
+  position: absolute;
+  height: 20vw;
+  width: 20vw;
+  min-width: 240px;
+  min-height: 240px;
+  border-radius: 50%;
+  left: 2%;
+  box-shadow: 0px 0px 25px 7px #257ccd;
+  background-color: black;
+  animation: fadein 1s;
+}
+
+/*.ring {
+  width: 300px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid red;
+  position: absolute;
+  z-index: -100;
+  transform: rotateZ(-17deg);
+}*/
 
 .container {
   max-width: 550px;
@@ -22,11 +63,13 @@ h1 {
   margin: 50px auto;
   padding: 15px;
   box-shadow: 0px 0px 25px 7px #FFEB3B;
+  animation: fadein 2s;
 }
 
 .inter-container {
   width: 80%;
   margin: auto;
+  margin-top: 40px;
 }
 
 .main-stage {
@@ -41,10 +84,9 @@ h1 {
 }
 
 .top-div{
-  margin-top: 73px;
 }
 .game-element {
-  margin: 17px 10px;
+  margin: 15px 10px;
 }
 
 .game-stat {
@@ -66,7 +108,7 @@ h1 {
   cursor: pointer;
   background-color: #257ccd;
   color: white;
-  margin: 5px auto;
+  margin: 20px auto;
   text-align: center;
   transition: all .3s ease-in-out;
 }
@@ -87,6 +129,16 @@ h1 {
 
 }
 
+#guess-word {
+  transition: all 1s ease;
+}
+
+#incorrect-guesses {
+  color: #ef0000;
+}
+
+
+/*Rocket flies in on load*/
 @keyframes rocketFly {
     from {
       bottom: 13%;
@@ -96,4 +148,10 @@ h1 {
       bottom: 100%;
       left: 50%;
     }
+}
+
+/*Content gracfully fades in on load*/
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }

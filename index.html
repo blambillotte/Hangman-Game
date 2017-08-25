@@ -8,6 +8,15 @@
   <title>Hangman Game</title>
 </head>
 <body>
+  <div class="directions">
+    <!-- <div class="ring"></div> -->
+    <div class="inter-container">
+      <h2>Directions</h2>
+      <hr>
+      <p>You have 10 tries to spell out the mystery planet. <br><br> Each letter typed on your keyboard will count as a guess. </p>
+    </div>
+  </div>
+
   <div class="container">
     <div class="inter-container">
     <div class="top-div">
@@ -35,6 +44,13 @@
       <div class="game-stat" id="loss-counter">3</div>
       <br>
     </div>
+    <hr>
+    <div class="game-element">
+      <span>Incorrect Guesses:</span>
+      <div class="game-stat" id="incorrect-guesses"></div>
+      <br>
+    </div>
+    <hr>
     <div id="reset-btn">Reset Game</div>
   </div>
   </div>
